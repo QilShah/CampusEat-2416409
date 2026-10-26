@@ -1,0 +1,30 @@
+[
+  {
+    "id": "2416464-warung-selera",
+    "name": "Warung Selera Kita",
+    "location": "Mahallah Ali, Block B",
+    "openHours": "7:30 am - 10:30 pm",
+    "isOpen": true,
+    "menu": [
+      { "id": "2416464-m1", "name": "Nasi Ayam Gepuk", "price": 10.0, "category": "Rice", "popular": true },
+      { "id": "2416464-m2", "name": "Nasi Lemak Ayam Goreng", "price": 8.5, "category": "Rice", "popular": true },
+      { "id": "2416464-m3", "name": "Roti Sarang Burung", "price": 5.5, "category": "Roti", "popular": true },
+      { "id": "2416464-m4", "name": "Roti Canai Banjir", "price": 3.5, "category": "Roti", "popular": false },
+      { "id": "2416464-m5", "name": "Mee Goreng Mamak", "price": 6.5, "category": "Noodles", "popular": false },
+      { "id": "2416464-m6", "name": "Maggi Goreng Double", "price": 7.0, "category": "Noodles", "popular": true },
+      { "id": "2416464-m7", "name": "Teh Tarik", "price": 2.5, "category": "Drinks", "popular": true },
+      { "id": "2416464-m8", "name": "Sirap Limau Ais", "price": 3.0, "category": "Drinks", "popular": false }
+    ]
+  },
+  {
+    "id": "2415666-kafe-aminah",
+    "name": "Kafe Mahallah Aminah",
+    "location": "Mahallah Aminah, Ground Floor",
+    "openHours": "8:00 am - 9:00 pm",
+    "isOpen": true,
+    "menu": [
+      { "id": "2415666-m1", "name": "Nasi Ayam Penyet", "price": 9.0, "category": "Rice", "popular": true },
+      { "id": "2415666-m2", "name": "Air Bandung", "price": 3.0, "category": "Drinks", "popular": false }
+    ]
+  }
+]
