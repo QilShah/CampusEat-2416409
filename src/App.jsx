@@ -4,6 +4,7 @@ import VendorCard from './components/VendorCard.jsx'
 import MenuList from './components/MenuList.jsx'
 import Footer from './components/Footer.jsx'
 import CartPage from './components/CartPage.jsx'
+import RecentlyViewed from './components/RecentlyViewed.jsx'
 import { Loading, ErrorMessage } from './components/Status.jsx'
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
   const [cart, setCart] = useState([]) // Array of { item, qty }
   const [view, setView] = useState('menu') // 'menu' | 'cart' | 'done'
   const [lastOrder, setLastOrder] = useState(null)
+
+  // Feature Digit 9: Recently Viewed items
+  const [recentlyViewed, setRecentlyViewed] = useState([])
 
   // B2: Fetch with AbortController and reloadKey dependency
   useEffect(() => {
@@ -48,8 +52,21 @@ function App() {
     return () => controller.abort()
   }, [reloadKey])
 
+  // Feature Digit 9: No duplicates, newest first, max 5
+  function handleViewItem(item) {
+    setRecentlyViewed((prev) => {
+      const filtered = prev.filter((i) => i.id !== item.id)
+      return [item, ...filtered].slice(0, 5)
+    })
+  }
+
+  function handleClearRecentlyViewed() {
+    setRecentlyViewed([])
+  }
+
   // B3: Cart operations
   function handleAddToCart(item) {
+    handleViewItem(item) // Adding to cart also registers as viewed
     setCart((prevCart) => {
       const existing = prevCart.find((line) => line.item.id === item.id)
       if (existing) {
@@ -139,9 +156,20 @@ function App() {
         {selectedVendor && (
           <section>
             <h2 className="section-title">Menu: {selectedVendor.name}</h2>
-            <MenuList items={selectedVendor.menu} onAdd={handleAddToCart} />
+            <MenuList
+              items={selectedVendor.menu}
+              onAdd={handleAddToCart}
+              onViewItem={handleViewItem}
+            />
           </section>
         )}
+
+        {/* Feature Digit 9: Rendered using index.css .grid and .card */}
+        <RecentlyViewed
+          items={recentlyViewed}
+          onAdd={handleAddToCart}
+          onClear={handleClearRecentlyViewed}
+        />
       </>
     )
   }
